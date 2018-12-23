@@ -1,0 +1,71 @@
+#!/bin/bash
+#popoutdisplay written on 07.09.2018 by derberg
+#Improved V2 (with while loop) created: 21. Dec 2018
+#Added blue input: 22.12.2018
+
+#create terminal with specific size and get it's process id
+aterm -bl -g 80x23 & export APP_PID=$!
+echo Process id: $APP_PID
+#get window id in dec from process id [sleep or else it may be to fast to get an ID..]
+sleep 1
+DEC_ID=$(xdotool search --pid $APP_PID)
+echo Window id [DEC]: $DEC_ID 
+#convert window id to hex
+HEX_ID=$(printf 0x%x $DEC_ID)
+echo Window id [HEX]: $HEX_ID
+
+#make the window always on top
+wmctrl -i -r $HEX_ID -b add,above
+
+#Create the virtual display, run window manager [so that fullscreen, etc. works correctly], 
+#and start a web browser
+Xephyr -ac -br -noreset -parent $HEX_ID :1337 &> /dev/null &
+sleep 1 &
+
+#Spawn apps
+echo "Expect buggy behaviour without a wm (Recommended: awesome)"
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+while true; do
+    	sleep 5 &
+    	printf "Enter ${RED}app name${NC} you want to start: "
+    		
+		x='' HEX='7f' string='';
+                while [[ $HEX != "" ]]; do
+                i=16 n=21
+                while [[ $HEX != "" ]]; do
+                        read -sn1 x;
+                        HEX=$(echo $(printf "$x" | od -t x1) | grep -o -P '(?<=0000000 ).*(?= 0000001)')
+                        if [[ $HEX == "7f" ]]; then break; fi
+                        string=$string"\x"$HEX
+                        if [ "$i" != "21" ]
+                          then ((i=i+1)); printf "\e[48;5;${i}m $x \e[0m";
+                          else if [ "$n" != "17" ]
+                                 then ((n=n-1)); printf "\e[48;5;${n}m $x \e[0m";
+                                 else i=17 n=21; printf "\e[48;5;${i}m $x \e[0m";
+                               fi
+                        fi
+                done;
+                string=$(echo -e $string | sed 's/\\x/ /g')
+                if [[ -z $string ]]; then string=$(echo -e ${string}); else string=$(echo -e ${string::-1}); fi
+               	APP_NAME=$string
+                echo ""
+                tput cuu1 # move cursor up by one line
+                tput el # clear the line
+		printf "Enter ${RED}app name${NC} you want to start: "
+                #repeat without last char
+                i=16 n=21
+                for (( s=0 ; s<${#string} ; s++ )); do
+                        if [ "$i" != "21" ]
+                          then ((i=i+1)); printf "\e[48;5;${i}m ${string:$s:1} \e[0m";
+                          else if [ "$n" != "17" ]
+                                 then ((n=n-1)); printf "\e[48;5;${n}m ${string:$s:1} \e[0m";
+                                 else i=17 n=21; printf "\e[48;5;${i}m ${string:$s:1} \e[0m";
+                               fi
+                        fi
+                done
+                done;
+
+DISPLAY=:1337 $APP_NAME &> /dev/null & #errors thrown away
+printf "\n"
+done;

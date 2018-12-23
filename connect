@@ -1,0 +1,6 @@
+#!/bin/bash
+echo 'wlan-connector by DerBerg (written at 29.05.2017)'
+#$1 = 1. Parameter
+wpa_supplicant -c$1.wlan -i wlp2s0 -B nl80211
+echo 'connecting..'
+dhcpcd wlp2s0

@@ -1,0 +1,28 @@
+#!/bin/bash
+#popoutdisplay written on 07.09.2018 by derberg
+
+#create terminal with specific size and get it's process id
+aterm -bl -g 80x23 & export APP_PID=$!
+echo Process id: $APP_PID
+#get window id in dec from process id [sleep or else it may be to fast 
+to get an ID..]
+sleep 1
+DEC_ID=$(xdotool search --pid $APP_PID)
+echo Window id [DEC]: $DEC_ID
+#convert window id to hex
+HEX_ID=$(printf 0x%x $DEC_ID)
+echo Window id [HEX]: $HEX_ID
+
+#make the window always on top
+wmctrl -i -r $HEX_ID -b add,above
+
+#Create the virtual display, run window manager [so that fullscreen, 
+etc. works correctly],
+#and start a web browser
+Xephyr -ac -br -noreset -parent $HEX_ID :1337 &
+sleep 1 &
+DISPLAY=:1337 awesome &
+DISPLAY=:1337 evince &
+
+
+
