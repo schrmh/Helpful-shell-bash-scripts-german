@@ -13,3 +13,6 @@ Einfach Dateien mit Endung ".wlan" anlegen, deren Namen ohne Endung als Paramete
 
 connectRE
 Parameter "down" um Verbindung vom WLAN-Netzwerk zu trennen. Ohne Parameter wird das Netzwerkinterface wieder aktiviert. wlp2s0 ersetzen (ifconfig oder iw dev).
+
+AccessPoint
+Schnell ein temporäres WLAN-Netzwerk erstellen. Bei Bedarf in der Datei noch Passwort anhängen.
