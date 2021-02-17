@@ -12,7 +12,8 @@ Verbinde dich manuell mit einem WLAN-Netzwerk. wlp2s0 ersetzen (ifconfig oder iw
 Einfach Dateien mit Endung ".wlan" anlegen, deren Namen ohne Endung als Parameter übergeben werden.
 
 connectRE
-Parameter "down" um Verbindung vom WLAN-Netzwerk zu trennen. Ohne Parameter wird das Netzwerkinterface wieder aktiviert. wlp2s0 ersetzen (ifconfig oder iw dev).
+Parameter "down" um Verbindung vom WLAN-Netzwerk zu trennen. Ohne Parameter wird das Netzwerkinterface wieder aktiviert. wlp2s0 ersetzen (ls /sys/class/net
+, ip link, ifconfig oder iw dev).
 
 AccessPoint
 Schnell ein temporäres WLAN-Netzwerk erstellen. Bei Bedarf in der Datei noch Passwort anhängen.
