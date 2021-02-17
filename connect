@@ -1,6 +1,7 @@
-#!/bin/bash
-echo 'wlan-connector by DerBerg (written at 29.05.2017)'
+#!/bin/sh
+echo 'wlan-connector by DerBerg (v2 — 17th of February 2021)'
 #$1 = 1. Parameter
-wpa_supplicant -c$1.wlan -i wlp2s0 -B nl80211
+INTERFACE=$(ls /sys/class/net | grep wl) #One interface eg. wlan0 or wlp2s0 listed by ip link
+wpa_supplicant -c$1.wlan -i $INTERFACE -B #maybe add nl80211 or wext at end
 echo 'connecting..'
-dhcpcd wlp2s0
+dhcpcd $INTERFACE
