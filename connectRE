@@ -1,21 +1,14 @@
-#!/bin/bash
-echo 'connectRE by DerBerg (written at 09.09.2017)'
-
+#!/bin/sh
+echo 'connectRE by DerBerg (v2 — 17th of February 2021)'
 #$1 = 1. Parameter
-if [ "$1" == "down" ]
-then
-	echo 'shutting down network interface..'
+INTERFACE=$(ls /sys/class/net | grep wl) #Alternatively use ip link
 
-	#Would be cool if wlp3s0 - the interface name of the connected 
-	#network - 
-	#could be detected automatically. So that the script works on 
-	#other devices  
-	sudo ifconfig wlp2s0 down
-else
-	echo 'reenabling network interface..'
-
-	sudo ifconfig wlp2s0 up
-	sudo dhclient wlp2s0
-	echo 'network interface wlp2s0 is up again!'
-
-fi
+[ "$1" = "down" ] && {
+        echo 'shutting down network interface..'
+        sudo ifconfig $INTERFACE down
+} || {
+        echo 'reenabling network interface..'
+        sudo ifconfig $INTERFACE up
+        sudo dhclient $INTERFACE
+        echo 'network interface' $INTERFACE 'is up again!'
+}
