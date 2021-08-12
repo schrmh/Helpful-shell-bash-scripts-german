@@ -28,3 +28,9 @@ Version 2 hat formatierte Ausgabe, gibt jedoch sehr viele Shell-Prozsse aus. Eve
 ### minimizewindows.sh / windowactivate.sh
 Erstes Skript minimiert Fenster, die den übergebenen Teil im Titel haben.  
 Zweites Skript holt entsprechend ein Fenster in den Vordergrund.  
+
+### ungrab.sh
+Der Cursor sieht aus wie eine Hand, die etwas festhält und Fenster können nicht mehr angeklickt werden?  
+Dieses Skript löst diesen Status.
+Öffne einen neuen Terminalemulator (Default-Tastenkombination Strg+Shift+T) und gebe diesem mit Alt+Tabulator-Taste Fokus. Führ enun das Skript aus.  
+Eventuell kann man auch im tty `export DISPLAY=:0` schreiben und dann das Skript ausführen.  
