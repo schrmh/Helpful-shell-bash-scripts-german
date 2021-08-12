@@ -25,3 +25,6 @@ Offene Pseude-Terminals (PTS), darin geöffnete Arbeitsverzeichnisse und eventue
 Version 1 gibt nur Arbeitsverzeichnisse aus und hat einfachere Ausgabe.  
 Version 2 hat formatierte Ausgabe, gibt jedoch sehr viele Shell-Prozsse aus. Eventuell die erste Zeile auskommentieren (und auf die Shell anpassen).
 
+### minimizewindows.sh / windowactivate.sh
+Erstes Skript minimiert Fenster, die den übergebenen Teil im Titel haben.  
+Zweites Skript holt entsprechend ein Fenster in den Vordergrund.  
