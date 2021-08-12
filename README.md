@@ -19,3 +19,9 @@ Schnell ein temporäres WLAN-Netzwerk erstellen. Bei Bedarf in der Datei noch Pa
 
 ### discord-st.sh
 Embedde st ("Simple Terminal" von suckless.org) in Discord. Vielleicht nützlich während Voicechats..
+
+### executedwithinpts2.sh / executedwithinpts.sh
+Offene Pseude-Terminals (PTS), darin geöffnete Arbeitsverzeichnisse und eventuell welcher Befehl darin ausgeführt wird.  
+Version 1 gibt nur Arbeitsverzeichnisse aus und hat einfachere Ausgabe.  
+Version 2 hat formatierte Ausgabe, gibt jedoch sehr viele Shell-Prozsse aus. Eventuell die erste Zeile auskommentieren (und auf die Shell anpassen).
+
