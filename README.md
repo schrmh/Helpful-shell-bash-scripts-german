@@ -34,3 +34,7 @@ Der Cursor sieht aus wie eine Hand, die etwas festhält und Fenster können nich
 Dieses Skript löst diesen Status.
 Öffne einen neuen Terminalemulator (Default-Tastenkombination Strg+Shift+T) und gebe diesem mit Alt+Tabulator-Taste Fokus. Führ enun das Skript aus.  
 Eventuell kann man auch im tty `export DISPLAY=:0` schreiben und dann das Skript ausführen.  
+
+### png-to-jxl-watcher
+Dieses Skript konvertiert neue PNG-Bilder, die in dem in der DIR-Variable angegebenen Ordner landen, in JXL-Bilder um.  
+Achtung: Es findet keine Prüfung statt, ob noch Speicherplatz vorhanden ist — Screenshots könnten bei Platzmangel nach Konvertierung verloren gehen.  

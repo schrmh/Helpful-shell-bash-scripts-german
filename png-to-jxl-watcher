@@ -1,0 +1,11 @@
+DIR="/home/duda/Screenshots+/"
+mkdir -p "$DIR"/converted_jxl
+
+inotifywait -m "$DIR" -e create -e moved_to |
+    while read dir action file; do
+    	BASE="$(basename $file .png)"	    	
+        #echo "The file '$file' appeared in directory '$dir' via '$action'"
+        [ "$action" = "CREATE" ] && [ "$BASE" != "$file" ] && {
+		cjxl -q 100 -m -s 9 -E 3 -I 1 "$DIR"/"$file" "$DIR"/converted_jxl/"$BASE.jxl" > /dev/null && rm "$DIR"/"$file"
+        }
+done
