@@ -1,3 +1,4 @@
+#!/bin/bash
 #PTS_PROCESSES="$(ps a -o tty:1,pid,command | awk '!/bash/ && /pts/' | cut -d " " -f2-)" #only processes without shell bash
 PTS_PROCESSES="$(ps a -o tty:1,pid,command | grep 'pts/' | cut -d " " -f2-)" #open terminal terminal emulators
 while IFS= read -r line; do

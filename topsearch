@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/bin/sh
 top -p `pgrep -d "," $1`

@@ -1,3 +1,4 @@
+#!/bin/sh
 DIR="/home/duda/Screenshots+/"
 mkdir -p "$DIR"/converted_jxl
 

@@ -32,7 +32,7 @@ Zweites Skript holt entsprechend ein Fenster in den Vordergrund.
 ### ungrab.sh
 Der Cursor sieht aus wie eine Hand, die etwas festhält und Fenster können nicht mehr angeklickt werden?  
 Dieses Skript löst diesen Status.
-Öffne einen neuen Terminalemulator (Default-Tastenkombination Strg+Shift+T) und gebe diesem mit Alt+Tabulator-Taste Fokus. Führ enun das Skript aus.  
+Öffne einen neuen Terminalemulator (Default-Tastenkombination Strg+Shift+T) und gebe diesem mit Alt+Tabulator-Taste Fokus. Führe nun das Skript aus.  
 Eventuell kann man auch im tty `export DISPLAY=:0` schreiben und dann das Skript ausführen.  
 
 ### png-to-jxl-watcher
